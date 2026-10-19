@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineWord - Bilheteria Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <!-- Nome do Cinema -->
+        <div class="logo-cinema">CineWord</div>
+
+        <!-- ================= PÁGINA 1: DETALHES DO FILME ================= -->
+        <div id="paginaFilme">
+            <div class="filme-info-container">
+                <!-- Cartaz do Filme -->
+                <div class="cartaz"></div>
+
+                <!-- Informações Laterais -->
+                <div class="detalhes-filme">
+                    <h2 class="titulo-filme">Verity</h2>
+                    <div class="fichatecnica">
+                        <span class="classificacao">16</span>
+                        <span>Suspense / Drama</span>
+                    </div>
+                    <p class="sinopse">
+                        Uma escritora em ascensão aceita um trabalho misterioso: terminar a série de livros de uma autora famosa que sofreu um acidente. Ao entrar na casa da família, ela descobre manuscritos perturbadores que revelam segredos sombrios sobre o passado de todos ali.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Barrinha de Dias da Semana -->
+            <div class="seletor-dias">
+                <button class="btn-dia ativo" onclick="selecionarDia(this, 'Hoje')"><small>Hoje</small><span>19</span></button>
+                <button class="btn-dia" onclick="selecionarDia(this, 'Ter')"><small>Ter</small><span>20</span></button>
+                <button class="btn-dia" onclick="selecionarDia(this, 'Qua')"><small>Qua</small><span>21</span></button>
+                <button class="btn-dia" onclick="selecionarDia(this, 'Qui')"><small>Qui</small><span>22</span></button>
+                <button class="btn-dia" onclick="selecionarDia(this, 'Sex')"><small>Sex</small><span>23</span></button>
+                <button class="btn-dia" onclick="selecionarDia(this, 'Sáb')"><small>Sáb</small><span>24</span></button>
+            </div>
+
+            <!-- Botões de Horários e Seções -->
+            <div class="sessoes-container">
+                <div class="sessoes-titulo">Selecione o Horário</div>
+                <div class="botoes-horario">
+                    <button class="btn-sessao" onclick="irParaAssentos('14:40', 'Sala 4')">
+                        <span>14:40</span>
+                        <small>SALA 4 (Dub)</small>
+                    </button>
+                    <button class="btn-sessao" onclick="irParaAssentos('16:00', 'Sala 6')">
+                        <span>16:00</span>
+                        <small>SALA 6 (Leg)</small>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PÁGINA 2: MAPA DE ASSENTOS ================= -->
+        <div id="paginaAssentos" class="hidden">
+            <div class="topo-assentos">
+                <button class="btn-voltar" onclick="irParaFilme()">←</button>
+                <div class="sessao-info-topo">
+                    Filme: <strong>Verity</strong><br>
+                    Data: <span id="dataSelecionada" class="destaque">Hoje</span> | 
+                    Sessão: <span id="sessaoSelecionada" class="destaque"></span>
+                </div>
+            </div>
+
+            <div class="tela"></div>
+            <div class="tela-texto">TELA DO CINEMA</div>
+
+            <!-- Grade Dinâmica com Corredores Ajustados -->
+            <div class="mapa-scroll">
+                <div class="mapa-assentos" id="mapaAssentos"></div>
+            </div>
+
+            <!-- Legenda -->
+            <div class="legenda">
+                <div class="legenda-item"><div class="quadrado q-livre"></div> Livre</div>
+                <div class="legenda-item"><div class="quadrado q-selecionado"></div> Escolhido</div>
+                <div class="legenda-item"><div class="quadrado q-ocupado"></div> Ocupado</div>
+            </div>
+
+            <!-- Painel de valores -->
+            <div class="resumo">
+                <p>Ingressos selecionados: <span id="qtdIngressos" class="destaque">0</span></p>
+                <p>Valor total: <span id="valorTotal" class="destaque">R$ 0,00</span></p>
+                
+                <!-- Novo Botão de Confirmação -->
+                <button id="btnComprar" class="btn-comprar" disabled onclick="finalizarCompra()">
+                    Confirmar e Comprar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
